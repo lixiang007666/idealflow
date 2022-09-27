@@ -20,6 +20,8 @@ class Loss:
 class MSE(Loss):
 
     def loss(self, predictions, targets):
+        # print(len(predictions[0]))
+        # print(targets)
         return 0.5 * np.sum((predictions - targets) ** 2) / targets.shape[0]
 
     def grad(self, predictions, targets):

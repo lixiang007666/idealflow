@@ -1,0 +1,7 @@
+# Data
+mnist.pkl.gz
+
+# Build
+build/ 
+dist/
+idealflow.egg-info/

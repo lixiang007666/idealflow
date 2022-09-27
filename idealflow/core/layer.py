@@ -72,7 +72,7 @@ class Layer:
     def is_init(self, is_init):
         self._is_init = is_init
         for name in self.param_names:
-            self.shapes[name] = 0
+            self.shapes[name] = self.initializers[name](self.shapes[name])
 
     @property
     def is_training(self):
@@ -98,14 +98,15 @@ class Layer:
     def _init_params(self):
         for name in self.param_names:
             # param_names: ('w', 'b')
-            print(self.param_names)
-            print(self.initializers[name])
-            print(self.shapes[name])
-            # print(self.initializers[name](self.shapes[name]))
-            print(self.params['w'])
-            self.params[name] =0
+            # print(self.param_names)
+            # print(self.initializers[name])
+            # print(self.shapes[name])
+            # # print(self.initializers[name](self.shapes[name]))
+            # print(self.params['w'])
+            # init = self.initializers[name]
+            # print(init)
+            self.params[name] = self.initializers[name](self.shapes[name])
         self.is_init = True
-        print("test")
 
 
 class Dense(Layer):
@@ -118,11 +119,11 @@ class Dense(Layer):
     """
     def __init__(self,
                  num_out,
-                 w_init=HeUniform(),
+                 w_init=XavierUniform(),
                  b_init=Zeros()):
         super().__init__()
 
-        self.initializers = {"w": w_init, "b": b_init}
+        self.initializers = {"w": XavierUniform(), "b": Zeros()}
         self.shapes = {"w": [None, num_out], "b": [num_out]}
 
     def forward(self, inputs):

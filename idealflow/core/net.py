@@ -29,7 +29,6 @@ class Net:
         return "\n".join([str(layer) for layer in self.layers])
 
     def forward(self, inputs):
-        print("flag1")
         for layer in self.layers:
             inputs = layer.forward(inputs)
         return inputs

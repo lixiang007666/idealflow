@@ -112,6 +112,7 @@ class XavierNormal(Initializer):
         self._gain = gain
 
     def init(self, shape):
+        print("lixiang",shape)
         fan_in, fan_out = get_fans(shape)
         std = self._gain * np.sqrt(2.0 / (fan_in + fan_out))
         return np.random.normal(loc=0.0, scale=std, size=shape)
@@ -153,3 +154,8 @@ class HeNormal(Initializer):
         fan_in, _ = get_fans(shape)
         std = self._gain * np.sqrt(2.0 / fan_in)
         return np.random.normal(loc=0.0, scale=std, size=shape)
+
+
+if __name__=="__main__":
+    # test
+    print(XavierUniform())
