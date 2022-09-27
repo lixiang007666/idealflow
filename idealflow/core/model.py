@@ -15,6 +15,8 @@ class Model:
 
     # 前向传播
     def forward(self, inputs):
+        print("flag2__________")
+        print(inputs)
         return self.net.forward(inputs)
 
     # loss 的反向传播，计算梯度。

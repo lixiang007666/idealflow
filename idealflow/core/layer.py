@@ -2,7 +2,7 @@
 
 import numpy as np
 from idealflow.core.initializer import Ones
-from idealflow.core.initializer import XavierUniform
+from idealflow.core.initializer import XavierUniform, HeUniform
 from idealflow.core.initializer import Zeros
 from idealflow.utils.math import sigmoid
 
@@ -72,7 +72,7 @@ class Layer:
     def is_init(self, is_init):
         self._is_init = is_init
         for name in self.param_names:
-            self.shapes[name] = self.params[name].shape
+            self.shapes[name] = 0
 
     @property
     def is_training(self):
@@ -97,8 +97,15 @@ class Layer:
 
     def _init_params(self):
         for name in self.param_names:
-            self.params[name] = self.initializers[name](self.shapes[name])
+            # param_names: ('w', 'b')
+            print(self.param_names)
+            print(self.initializers[name])
+            print(self.shapes[name])
+            # print(self.initializers[name](self.shapes[name]))
+            print(self.params['w'])
+            self.params[name] =0
         self.is_init = True
+        print("test")
 
 
 class Dense(Layer):
@@ -111,7 +118,7 @@ class Dense(Layer):
     """
     def __init__(self,
                  num_out,
-                 w_init=XavierUniform(),
+                 w_init=HeUniform(),
                  b_init=Zeros()):
         super().__init__()
 

@@ -7,3 +7,5 @@ from idealflow.core import optimizer
 
 from idealflow.utils import math
 from idealflow.utils import structured_param
+from idealflow.utils import data_loader
+from idealflow.utils import dataset
