@@ -1,5 +1,5 @@
 # idealflow
-# How to install？
+## How to install？
 
 Execute the following commands in the root dict:
 
