@@ -27,6 +27,10 @@ python setup.py install
 
  - [mnist](https://github.com/lixiang007666/idealflow/blob/main/test/example/mnist.py)
 
+## Related Tutorials
+
+ - [img2col](https://cloud.tencent.com/developer/article/2127875)
+
 ## Test
 
 TODO
