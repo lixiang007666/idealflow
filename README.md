@@ -31,6 +31,11 @@ python setup.py install
 
  - [img2col](https://cloud.tencent.com/developer/article/2127875)
 
-## Test
+## References
+
+ - [tinynn](https://zhuanlan.zhihu.com/p/78713744)
+ - [AD](https://zhuanlan.zhihu.com/p/82582926)
+
+
 
 TODO
