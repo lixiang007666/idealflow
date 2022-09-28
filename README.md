@@ -18,9 +18,9 @@ python setup.py install
 |--|--|--|--|
 | Dense | MSE | SGD | Normal/TruncatedNormal |
 | ReLU | MAE | Adam | HeUniform/HeNormal |
-|  | Huber | | Uniform |
-|  | SoftmaxCrossEntropy | | XavierUniform/XavierNormal |
-|  | SigmoidCrossEntropy | | Zeros/Ones |
+| Conv2d | Huber | | Uniform |
+| TransposedConv2d | SoftmaxCrossEntropy | | XavierUniform/XavierNormal |
+| Maxpool2d | SigmoidCrossEntropy | | Zeros/Ones |
 
 
 ## Model Zoo and Benchmark
