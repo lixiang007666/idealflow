@@ -1,4 +1,5 @@
 [![License](https://img.shields.io/npm/l/@nrwl/workspace.svg?style=flat-square)]()
+[![Simple CI](https://github.com/lixiang007666/idealflow/actions/workflows/simple.yml/badge.svg)](https://github.com/lixiang007666/idealflow/actions/workflows/simple.yml)
 # A Lightweight Deep Learning Library: IdealFlow
 
 IdealFlow is a lightweight deep learning framework used for personal learning (building wheels is important), use: `import idealflow as iflow`.
