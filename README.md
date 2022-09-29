@@ -31,6 +31,7 @@ python setup.py install
 
  - [img2col](https://cloud.tencent.com/developer/article/2127875)
  - [AD code](https://cloud.tencent.com/developer/article/2129649)
+ - [Several common opt methods](https://www.cnblogs.com/shixiangwan/p/7532830.html)
 
 ## References
 
