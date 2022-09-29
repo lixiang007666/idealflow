@@ -36,6 +36,9 @@ python setup.py install
  - [AD code](https://cloud.tencent.com/developer/article/2129649)
  - [Several common opt methods](https://www.cnblogs.com/shixiangwan/p/7532830.html)
  - [Momentum](https://zhuanlan.zhihu.com/p/34240246)
+ - [Adam](https://www.jiqizhixin.com/graph/technologies/f41c192d-9c93-4306-8c47-ce4bf10030dd)
+ - [Initializer](https://zhuanlan.zhihu.com/p/40175178)
+
 
 ## References
 
