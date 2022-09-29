@@ -30,6 +30,7 @@ python setup.py install
 ## Related Tutorials
 
  - [img2col](https://cloud.tencent.com/developer/article/2127875)
+ - [AD code](https://cloud.tencent.com/developer/article/2129649)
 
 ## References
 
