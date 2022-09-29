@@ -21,6 +21,7 @@ python setup.py install
 | Conv2d | Huber | | Uniform |
 | TransposedConv2d | SoftmaxCrossEntropy | | XavierUniform/XavierNormal |
 | Maxpool2d | SigmoidCrossEntropy | | Zeros/Ones |
+| RNN/LSTM | | |
 
 
 ## Model Zoo and Benchmark
