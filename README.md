@@ -24,6 +24,8 @@ python setup.py install
 | TransposedConv2d | SoftmaxCrossEntropy | | XavierUniform/XavierNormal |
 | Maxpool2d | SigmoidCrossEntropy | | Zeros/Ones |
 | RNN/LSTM | | |
+| BN | | |
+| Reshape/Flatten | | |
 
 
 ## Model Zoo and Benchmark
