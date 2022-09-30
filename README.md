@@ -38,6 +38,7 @@ python setup.py install
  - [Momentum](https://zhuanlan.zhihu.com/p/34240246)
  - [Adam](https://www.jiqizhixin.com/graph/technologies/f41c192d-9c93-4306-8c47-ce4bf10030dd)
  - [Initializer](https://zhuanlan.zhihu.com/p/40175178)
+ - [Batch Normalization](https://zhuanlan.zhihu.com/p/24810318)
 
 
 ## References
