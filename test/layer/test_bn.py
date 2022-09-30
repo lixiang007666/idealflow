@@ -6,7 +6,7 @@ def test_batch_normalization():
     input_ = np.array([[1.0, 2.0, 3.0, 4.0, 5.0],
                        [5.0, 4.0, 3.0, 2.0, 1.0]])
     mom, epsilon = 0.9, 1e-5
-    layer = tn.layer.BatchNormalization(momentum=mom, epsilon=epsilon)
+    layer = iflow.layer.BatchNormalization(momentum=mom, epsilon=epsilon)
     for i in range(3):
         layer.forward(input_)
         mean = input_.mean(0, keepdims=True)
