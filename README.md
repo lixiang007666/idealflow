@@ -26,6 +26,7 @@ python setup.py install
 | RNN/LSTM | | |
 | BN | | |
 | Reshape/Flatten | | |
+| Dropout | | |
 
 
 ## Model Zoo and Benchmark
