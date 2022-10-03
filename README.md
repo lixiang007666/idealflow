@@ -41,6 +41,7 @@ python setup.py install
  - [Adam](https://www.jiqizhixin.com/graph/technologies/f41c192d-9c93-4306-8c47-ce4bf10030dd)
  - [Initializer](https://zhuanlan.zhihu.com/p/40175178)
  - [Batch Normalization](https://zhuanlan.zhihu.com/p/24810318)
+ - [Dropout](https://mp.csdn.net/mp_blog/creation/success/127151037)
 
 
 ## References
