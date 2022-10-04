@@ -19,15 +19,17 @@ python setup.py install
 | Layer and Activation | Loss | Optimizer | Initializer | 
 |--|--|--|--|
 | Dense | MSE | SGD | Normal/TruncatedNormal |
-| ReLU | MAE | Adam | HeUniform/HeNormal |
+| ReLU/LeakyReLU | MAE | Adam | HeUniform/HeNormal |
 | Conv2d | Huber | | Uniform |
 | TransposedConv2d | SoftmaxCrossEntropy | | XavierUniform/XavierNormal |
 | Maxpool2d | SigmoidCrossEntropy | | Zeros/Ones |
 | RNN/LSTM | | |
 | BN | | |
 | Reshape/Flatten | | |
-| Dropout | | |
-
+| Sigmoid | | |
+| Softplus | | |
+| Tanh | | |
+| ELU/GELU | | |
 
 ## Model Zoo and Benchmark
 
@@ -43,6 +45,7 @@ python setup.py install
  - [Initializer](https://zhuanlan.zhihu.com/p/40175178)
  - [Batch Normalization](https://zhuanlan.zhihu.com/p/24810318)
  - [Dropout](https://mp.csdn.net/mp_blog/creation/success/127151037)
+ - [Activation](https://blog.csdn.net/qq_40824311/article/details/103017760)
 
 
 ## References
