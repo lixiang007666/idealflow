@@ -46,6 +46,7 @@ python setup.py install
  - [Batch Normalization](https://zhuanlan.zhihu.com/p/24810318)
  - [Dropout](https://mp.csdn.net/mp_blog/creation/success/127151037)
  - [Activation](https://blog.csdn.net/qq_40824311/article/details/103017760)
+ - [Loss](https://mp.csdn.net/mp_blog/creation/success/127160742)
 
 
 ## References
