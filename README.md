@@ -1,5 +1,8 @@
 [![License](https://img.shields.io/npm/l/@nrwl/workspace.svg?style=flat-square)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-pink.svg)](https://github.com/lixiang007666/idealflow/pulls)
+    <a href="https://github.com/lixiang007666/idealflow/actions">
+        <img src="https://img.shields.io/badge/test-pass-lightgrey"
+            alt="Action, CI"></a>
 
 # A Lightweight Deep Learning Library: IdealFlow
 
