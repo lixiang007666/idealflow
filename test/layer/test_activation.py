@@ -11,7 +11,7 @@ import idealflow as flow
 def test_activation(activation_layer, expect_range):
     """Test expected output range of activation layers"""
     input_ = np.random.normal(size=(100, 5))
-    net = iflow.net.Net([tn.layer.Dense(1), activation_layer])
+    net = iflow.net.Net([iflow.layer.Dense(1), activation_layer])
     output = net.forward(input_)
     lower_bound, upper_bound = expect_range
     assert np.all((output >= lower_bound) & (output <= upper_bound))
