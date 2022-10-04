@@ -1,3 +1,5 @@
+<img src="https://github.com/lixiang007666/idealflow/blob/master/ideal.jpg">
+
 [![License](https://img.shields.io/npm/l/@nrwl/workspace.svg?style=flat-square)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-pink.svg)](https://github.com/lixiang007666/idealflow/pulls)
     <a href="https://github.com/lixiang007666/idealflow/actions">
