@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-import idealflow as flow
+import idealflow as iflow
 
 @pytest.mark.parametrize("activation_layer, expect_range",
                          [(iflow.layer.Sigmoid(), (0, 1)),
