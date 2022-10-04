@@ -171,6 +171,80 @@ class ReLU(Activation):
 
     def derivative(self, x):
         return x > 0.0
+    
+class Sigmoid(Activation):
+
+    def func(self, x):
+        return sigmoid(x)
+
+    def derivative(self, x):
+        return self.func(x) * (1.0 - self.func(x))
+
+
+class Softplus(Activation):
+
+    def func(self, x):
+        return np.log(1.0 + np.exp(-np.abs(x))) + np.maximum(x, 0.0)
+
+    def derivative(self, x):
+        return sigmoid(x)
+
+
+class Tanh(Activation):
+
+    def func(self, x):
+        return np.tanh(x)
+
+    def derivative(self, x):
+        return 1.0 - self.func(x) ** 2
+
+
+class LeakyReLU(Activation):
+
+    def __init__(self, slope=0.2):
+        super().__init__()
+        self._slope = slope
+
+    def func(self, x):
+        x = x.copy()
+        x[x < 0.0] *= self._slope
+        return x
+
+    def derivative(self, x):
+        dx = np.ones_like(x)
+        dx[x < 0.0] = self._slope
+        return dx
+
+
+class GELU(Activation):
+    """Gaussian Error Linear Units
+    ref: https://arxiv.org/pdf/1606.08415.pdf
+    """
+
+    def __init__(self):
+        super().__init__()
+        self._alpha = 0.1702
+        self._cache = None
+
+    def func(self, x):
+        self._cache = sigmoid(self._alpha * x)
+        return x * self._cache
+
+    def derivative(self, x):
+        return self._cache + x * self._alpha * self._cache * (1.0 - self._cache)
+
+
+class ELU(Activation):
+
+    def __init__(self, alpha=1.0):
+        super().__init__()
+        self._alpha = alpha
+
+    def func(self, x):
+        return np.maximum(x, 0) + np.minimum(0, self._alpha * (np.exp(x) - 1))
+
+    def derivative(self, x):
+        return x > 0.0 + (x < 0.0) * self._alpha * np.exp(x)
 
 
 class Conv2D(Layer):
