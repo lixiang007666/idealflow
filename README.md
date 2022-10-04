@@ -44,9 +44,9 @@ python setup.py install
  - [Adam](https://www.jiqizhixin.com/graph/technologies/f41c192d-9c93-4306-8c47-ce4bf10030dd)
  - [Initializer](https://zhuanlan.zhihu.com/p/40175178)
  - [Batch Normalization](https://zhuanlan.zhihu.com/p/24810318)
- - [Dropout](https://mp.csdn.net/mp_blog/creation/success/127151037)
+ - [Dropout](https://lixiang.blog.csdn.net/article/details/127151037?spm=1001.2014.3001.5502)
  - [Activation](https://blog.csdn.net/qq_40824311/article/details/103017760)
- - [Loss](https://mp.csdn.net/mp_blog/creation/success/127160742)
+ - [Loss](https://lixiang.blog.csdn.net/article/details/127160742?spm=1001.2014.3001.5502)
 
 
 ## References
