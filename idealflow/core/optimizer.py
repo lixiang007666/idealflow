@@ -67,7 +67,8 @@ class Adam(Optimizer):
 
         step = -self.lr * _m / (_v ** 0.5 + self._epsilon)
         return step
-   
+ 
+
  class RAdam(Optimizer):
     """Rectified Adam. Ref: https://arxiv.org/pdf/1908.03265v1.pdf """
     def __init__(self,
