@@ -21,20 +21,22 @@ python setup.py install
 
 ## Supported Features
 
-| Layer and Activation | Loss | Optimizer | Initializer | 
+| Layer and Activation | Loss | Optimizer and Scheduler | Initializer | 
 |--|--|--|--|
 | Dense | MSE | SGD | Normal/TruncatedNormal |
 | ReLU/LeakyReLU | MAE | Adam | HeUniform/HeNormal |
-| Conv2d | Huber | | Uniform |
-| TransposedConv2d | SoftmaxCrossEntropy | | XavierUniform/XavierNormal |
-| Maxpool2d | SigmoidCrossEntropy | | Zeros/Ones |
-| RNN/LSTM | | |
-| BN | | |
-| Reshape/Flatten | | |
+| Conv2d | Huber | RAdam | Uniform |
+| TransposedConv2d | SoftmaxCrossEntropy | RMSProp | XavierUniform/XavierNormal |
+| Maxpool2d | SigmoidCrossEntropy | Momentum | Zeros/Ones |
+| RNN/LSTM | | Adagrad |
+| BN | | Adadelta |
+| Reshape/Flatten | | StepLR |
 | Sigmoid | | |
 | Softplus | | |
 | Tanh | | |
 | ELU/GELU | | |
+
+
 
 ## Model Zoo and Benchmark
 
