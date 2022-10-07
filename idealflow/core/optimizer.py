@@ -185,3 +185,139 @@ class Adadelta(Optimizer):
         return step
 
 
+class BaseScheduler:
+    """BaseScheduler model receive a optimizer and Adjust the lr
+    by calling step() method during training.
+    """
+    def __init__(self, optimizer):
+        self._optimizer = optimizer
+        self._init_lr = self.curr_lr
+
+        self._t = 0
+
+    def step(self):
+        self._t += 1
+        self._optimizer.lr = self._compute_lr()
+        return self.curr_lr
+
+    def _compute_lr(self):
+        raise NotImplementedError
+
+    @property
+    def curr_lr(self):
+        return self._optimizer.lr
+
+
+class StepLR(BaseScheduler):
+    """LR decayed by gamma every "step_size" epochs."""
+    def __init__(self,
+                 optimizer,
+                 step_size,
+                 gamma=0.1):
+        super().__init__(optimizer)
+        assert step_size >= 1
+        self._step_size = step_size
+        self._gamma = gamma
+
+    def _compute_lr(self):
+        decay = self._gamma if self._t % self._step_size == 0 else 1.0
+        return decay * self.curr_lr
+
+
+class MultiStepLR(BaseScheduler):
+    """LR decayed by gamma when #steps reaches one of the milestones.
+    Milestones must be monotonically increasing.
+    """
+    def __init__(self, optimizer, milestones, gamma=0.1):
+        super().__init__(optimizer)
+        milestones = [int(m) for m in milestones]
+        assert len(milestones) > 0, "milestones requires at-least one element!"
+        assert all(x < y for x, y in zip(milestones[:-1], milestones[1:])), \
+               "milestones must be a list of int and be increasing!"
+
+        self._milestones = milestones
+        self._gamma = gamma
+
+    def _compute_lr(self):
+        decay = self._gamma if self._t in self._milestones else 1.0
+        return decay * self.curr_lr
+
+
+class ExponentialLR(BaseScheduler):
+    """ExponentialLR is computed by:
+    lr_decayed = lr * decay_rate ^ (current_steps / decay_steps)
+    """
+    def __init__(self,
+                 optimizer,
+                 decay_steps,
+                 decay_rate=(1. / np.e)):
+        super().__init__(optimizer)
+        self._decay_steps = decay_steps
+        self._decay_rate = decay_rate
+
+    def _compute_lr(self):
+        if self._t <= self._decay_steps:
+            decay = self._decay_rate ** (self._t / self._decay_steps)
+            return self._init_lr * decay
+        return self.curr_lr
+
+
+class LinearLR(BaseScheduler):
+    """Linear decay learning rate when the number of the epoch is in
+    [start_step, start_step + decay_steps]
+    """
+    def __init__(self,
+                 optimizer,
+                 decay_steps,
+                 final_lr=1e-6,
+                 start_step=0):
+        super().__init__(optimizer)
+        assert decay_steps > 0
+
+        self._lr_delta = (final_lr - self._init_lr) / decay_steps
+
+        self._final_lr = final_lr
+        self._decay_steps = decay_steps
+        self._start_step = start_step
+
+    def _compute_lr(self):
+        if self._t > self._start_step:
+            if self._t <= self._start_step + self._decay_steps:
+                return self.curr_lr + self._lr_delta
+        return self.curr_lr
+
+
+class CyclicalLR(BaseScheduler):
+    """Cyclical increase and decrease learning rate within a reasonable range.
+    Ref: https://arxiv.org/pdf/1506.01186.pdf
+    """
+    def __init__(self,
+                 optimizer,
+                 cyclical_steps,
+                 min_lr=1e-3,
+                 max_lr=1e-2):
+        super().__init__(optimizer)
+        assert cyclical_steps > 2
+        assert max_lr >= min_lr
+        self._cyclical_steps = cyclical_steps
+        self._min_lr = min_lr
+        self._max_lr = max_lr
+        self._abs_lr_delta = 2 * (max_lr - min_lr) / cyclical_steps
+
+        self._is_cycling = False
+        self._cycling_start_t = None
+
+    def _compute_lr(self):
+        if self.curr_lr > self._max_lr:
+            return self.curr_lr - self._abs_lr_delta
+        if self.curr_lr < self._min_lr:
+            return self.curr_lr + self._abs_lr_delta
+
+        if not self._is_cycling:
+            self._is_cycling = True
+            self._cycling_start_t = self._t
+
+        if ((self._t - self._cycling_start_t) % self._cyclical_steps <
+                self._cyclical_steps // 2):
+            return self.curr_lr + self._abs_lr_delta
+        return self.curr_lr - self._abs_lr_delta
